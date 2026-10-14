@@ -1,0 +1,13 @@
+{
+  "name": "dyslexia-reader-gemini-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Small Gemini proxy for the Dyslexia-Friendly Reader Chrome extension",
+  "scripts": {
+    "start": "node server.js",
+    "test:gemini": "node test-gemini.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

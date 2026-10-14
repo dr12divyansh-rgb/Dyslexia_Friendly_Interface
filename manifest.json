@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "Dyslexia-Friendly Reader",
+  "version": "1.0.0",
+  "description": "A browser extension that transforms webpages into a more dyslexia-friendly reading experience.",
+
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+
+  "commands": {
+    "toggle_dyslexia_mode": {
+      "suggested_key": { "default": "Alt+Shift+D" },
+      "description": "Toggle Dyslexia Mode"
+    },
+    "toggle_reading_ruler": {
+      "suggested_key": { "default": "Ctrl+Shift+9" },
+      "description": "Toggle Reading Ruler"
+    },
+    "toggle_focus_mode": {
+      "suggested_key": { "default": "Ctrl+Shift+0" },
+      "description": "Toggle Focus Mode"
+    },
+    "toggle_read_aloud": {
+      "description": "Start or stop reading aloud"
+    },
+    "voice_chat": {
+      "suggested_key": { "default": "Alt+Shift+V" },
+      "description": "Start, cancel, or interrupt voice chat"
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["content.css"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/*.woff2"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url("fonts/OpenDyslexic-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Atkinson Hyperlegible";
+    src: url("fonts/AtkinsonHyperlegible-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body.dyslexia-mode,
+body.dyslexia-mode * {
+    font-family: var(--dyslexia-font, Arial, sans-serif) !important;
+    font-size: var(--dyslexia-font-size, 18px) !important;
+    line-height: var(--dyslexia-line-height, 1.8) !important;
+    letter-spacing: var(--dyslexia-letter-spacing, 0.04em) !important;
+    word-spacing: var(--dyslexia-word-spacing, 0.08em) !important;
+}
+
+body.dyslexia-mode {
+    background-color: var(--dyslexia-background, #f7f3e8) !important;
+    color: var(--dyslexia-text, #2d2d2d) !important;
+}
+
+body.dyslexia-mode a {
+    text-decoration: underline !important;
+}
+
+body.dyslexia-mode p,
+body.dyslexia-mode li {
+    max-width: 80ch;
+}

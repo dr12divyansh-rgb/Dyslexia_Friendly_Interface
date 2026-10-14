@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyslexia-Friendly Reader</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <div class="brand-icon" aria-hidden="true">Aa</div>
+            <div>
+                <h1>Dyslexia Reader</h1>
+                <p class="subtitle">Make webpages easier to read</p>
+            </div>
+        </header>
+
+        <section class="mode-card">
+            <div>
+                <strong>Dyslexia mode</strong>
+                <p>Apply your reading settings to this page.</p>
+            </div>
+            <button id="toggleMode" class="toggle" type="button" aria-pressed="false">OFF</button>
+        </section>
+
+        <section class="mode-card">
+            <div>
+                <strong>Reading ruler</strong>
+                <p id="rulerHelp">Highlight the line beside your pointer. Requires Dyslexia Mode.</p>
+            </div>
+            <button id="toggleRuler" class="toggle" type="button" aria-pressed="false" aria-describedby="rulerHelp" aria-label="Reading Ruler unavailable until Dyslexia Mode is on" disabled>OFF</button>
+        </section>
+
+        <section class="mode-card">
+            <div>
+                <strong>Focus mode</strong>
+                <p id="focusHelp">Keep the paragraph under your pointer clear. Requires Dyslexia Mode.</p>
+            </div>
+            <button id="toggleFocus" class="toggle" type="button" aria-pressed="false" aria-describedby="focusHelp" aria-label="Focus Mode unavailable until Dyslexia Mode is on" disabled>OFF</button>
+        </section>
+
+        <section class="setting">
+            <div class="setting-heading">
+                <label for="rulerHeight">Ruler height</label>
+                <output id="rulerHeightValue" for="rulerHeight">36 px</output>
+            </div>
+            <input id="rulerHeight" type="range" min="24" max="80" step="4" value="36">
+        </section>
+
+        <section class="setting">
+            <label for="fontSelect">Font family</label>
+            <select id="fontSelect">
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="OpenDyslexic">OpenDyslexic</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Atkinson Hyperlegible">Atkinson Hyperlegible</option>
+            </select>
+        </section>
+
+        <section class="setting">
+            <div class="setting-heading">
+                <label for="fontSize">Font size</label>
+                <output id="fontSizeValue" for="fontSize">18 px</output>
+            </div>
+            <input id="fontSize" type="range" min="14" max="26" step="1" value="18">
+        </section>
+
+        <section class="setting">
+            <div class="setting-heading">
+                <label for="lineHeight">Line spacing</label>
+                <output id="lineHeightValue" for="lineHeight">1.8</output>
+            </div>
+            <input id="lineHeight" type="range" min="1.2" max="2.4" step="0.1" value="1.8">
+        </section>
+
+        <section class="setting">
+            <div class="setting-heading">
+                <label for="letterSpacing">Letter spacing</label>
+                <output id="letterSpacingValue" for="letterSpacing">0.04 em</output>
+            </div>
+            <input id="letterSpacing" type="range" min="0" max="0.12" step="0.01" value="0.04">
+        </section>
+
+        <section class="setting">
+            <div class="setting-heading">
+                <label for="wordSpacing">Word spacing</label>
+                <output id="wordSpacingValue" for="wordSpacing">0.08 em</output>
+            </div>
+            <input id="wordSpacing" type="range" min="0" max="0.24" step="0.01" value="0.08">
+        </section>
+
+        <section class="setting">
+            <label for="themeSelect">Reading theme</label>
+            <select id="themeSelect">
+                <option value="cream">Warm cream</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </section>
+
+        <section class="setting assistant" aria-labelledby="assistantTitle">
+            <h2 id="assistantTitle">Accessibility Assistant</h2>
+            <button id="readControls" class="assistant-button" type="button">Read popup controls and instructions</button>
+            <button id="readPage" class="assistant-button" type="button">Read selected text or main article</button>
+            <div class="speech-controls" role="group" aria-label="Read-aloud playback controls">
+                <button id="pauseReading" type="button">Pause</button>
+                <button id="resumeReading" type="button">Resume</button>
+                <button id="stopReading" type="button">Stop</button>
+            </div>
+            <label class="check-setting" for="spokenFeedback">
+                <input id="spokenFeedback" type="checkbox">
+                Speak important setting changes
+            </label>
+            <button id="voiceControl" class="assistant-button" type="button" aria-pressed="false" aria-describedby="voiceHelp">Start voice commands</button>
+            <p id="voiceHelp" class="assistant-help">Voice commands start only when you press this button. Chrome's speech-recognition service may process microphone audio; this extension does not send audio to its own server.</p>
+            <p class="assistant-help">Alt+Shift+D toggles Dyslexia Mode. Alt+Shift+V opens voice chat; press it again while listening to cancel, or while speaking to interrupt and listen again. Voice chat connects to Gemini through the backend URL configured in its panel. Say “read aloud the conversation” to read that panel’s saved chat locally. Chrome speech recognition may process microphone audio through its own service.</p>
+            <p class="assistant-help">Customize keyboard shortcuts at <code>chrome://extensions/shortcuts</code>.</p>
+            <p id="speechStatus" class="status" role="status" aria-live="polite">Speech controls are ready.</p>
+        </section>
+
+        <div class="actions">
+            <button id="resetSettings" class="secondary" type="button">Reset settings</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Settings save automatically.</p>
+    </main>
+    <script src="popup.js"></script>
+</body>
+</html>

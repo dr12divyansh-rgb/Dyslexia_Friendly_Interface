@@ -1,0 +1,4 @@
+# Local secrets and generated files
+backend/.env
+backend/node_modules/
+npm-debug.log*

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Chat</title>
+    <link rel="stylesheet" href="voice-chat.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Voice Chat</h1>
+            <p>Speak a request; Gemini responds aloud through your configured backend.</p>
+        </header>
+
+        <section class="settings" aria-labelledby="connectionTitle">
+            <h2 id="connectionTitle">Gemini backend connection</h2>
+            <label for="endpoint">Backend URL</label>
+            <input id="endpoint" type="url" placeholder="https://your-backend.example" autocomplete="url" aria-describedby="backendHelp">
+            <p id="backendHelp" class="settings-help">The backend stores your Gemini key. Use Test backend to grant this extension access to that host.</p>
+            <div class="settings-actions">
+                <button id="saveSettings" type="button" class="secondary">Save backend URL</button>
+                <button id="testConnection" type="button" class="secondary">Test backend</button>
+            </div>
+        </section>
+
+        <p id="state" class="state" role="status" aria-live="assertive">Ready</p>
+        <p id="message" aria-live="polite">Press Alt+Shift+V to start listening. Press it again while listening to cancel.</p>
+
+        <section class="transcript-section">
+            <label for="transcript">Recognized speech</label>
+            <textarea id="transcript" rows="2" readonly aria-label="Recognized speech transcript"></textarea>
+        </section>
+
+        <section class="conversation-section" aria-labelledby="conversationTitle">
+            <div class="section-heading">
+                <h2 id="conversationTitle">Conversation</h2>
+                <div>
+                    <button id="readConversation" type="button" class="text-button">Read aloud</button>
+                    <button id="clearConversation" type="button" class="text-button">Clear</button>
+                </div>
+            </div>
+            <div id="conversation" class="conversation" role="log" aria-live="polite" aria-relevant="additions text"></div>
+        </section>
+
+        <div class="actions">
+            <button id="toggle" type="button">Start listening</button>
+            <button id="close" type="button" class="secondary">Close</button>
+        </div>
+
+        <p class="privacy">Recognized text and saved voice-chat history are sent to the backend URL you configure, which forwards them to Google Gemini. The Gemini API key stays on that backend. Chrome speech recognition may process microphone audio through its recognition service. “Read aloud the conversation” reads this panel’s saved chat locally; this extension does not scrape ChatGPT or other webpage conversations.</p>
+    </main>
+    <script src="voice-chat.js"></script>
+</body>
+</html>
